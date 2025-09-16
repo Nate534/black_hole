@@ -42,8 +42,7 @@ class Camera:
         move_vector = np.zeros(3, dtype=np.float64)
         
         if keys[pygame.K_w]:
-            move_vector[2] += 1  # Forward (in camera space)
-        if keys[pygame.K_s]:
+            move_vector[2] += 1  # Forward 
             move_vector[2] -= 1  # Backward
         if keys[pygame.K_a]:
             move_vector[0] -= 1  # Left
