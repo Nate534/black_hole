@@ -1,0 +1,18 @@
+// shaders/geodesic.comp
+#version 430
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(rgba8, binding = 0) writeonly uniform image2D outputImage;
+
+void main() {
+    ivec2 pixelCoords = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 size = imageSize(outputImage);
+    
+    if (pixelCoords.x >= size.x || pixelCoords.y >= size.y) {
+        return;
+    }
+    
+    // gradient for testing
+    vec2 uv = vec2(pixelCoords) / vec2(size);
+    vec4 color = vec4(uv, 0.5, 1.0);
+    imageStore(outputImage, pixelCoords, color);
+}
