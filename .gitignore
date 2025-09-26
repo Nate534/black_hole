@@ -51,3 +51,12 @@ htmlcov/
 # Temporary files
 *.tmp
 *.temp
+
+# Claude
+/.claude
+
+# Kiro
+/.kiro
+
+# other
+simulation.log
