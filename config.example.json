@@ -1,0 +1,31 @@
+{
+  "simulation": {
+    "width": 1200,
+    "height": 800,
+    "fps": 60,
+    "time_step": 50.0
+  },
+  "black_hole": {
+    "mass": 4e37,
+    "position": [0, 0, 0]
+  },
+  "particles": {
+    "count": 300,
+    "jet_particles": 30,
+    "inner_radius_multiplier": 2.5,
+    "outer_radius_multiplier": 12,
+    "max_trail_length": 50
+  },
+  "camera": {
+    "initial_position": [0, 2e11, -3e11],
+    "move_speed": 5e13,
+    "zoom_speed": 0.5,
+    "initial_zoom": 1.0
+  },
+  "rendering": {
+    "glow_effects": true,
+    "particle_trails": true,
+    "show_ui": true,
+    "disk_texture_size": 256
+  }
+}
