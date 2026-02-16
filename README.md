@@ -1,93 +1,47 @@
-# Black Hole Simulation
+# Black Hole
 
-A real-time 3D black hole simulation built with Python and Pygame, featuring gravitational physics, particle systems, and visual effects.
+A C# application for physics simulation and visualization.
 
-## Features
+## Project Description
 
-- **Realistic Physics**: Implements gravitational acceleration and Schwarzschild radius calculations
-- **Particle System**: Simulates accretion disk with hundreds of particles
-- **Visual Effects**: Glow effects, particle trails, and gravitational lensing visualization
-- **Interactive Camera**: Full 3D camera controls with zoom and movement
-- **Real-time Simulation**: 60 FPS simulation with dynamic particle generation
+Black Hole is a .NET-based project that combines physics simulations with rendering capabilities. The project is organized into modular components for physics calculations, rendering, and utility functions.
 
-## Installation
+## Setup/Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/black-hole-simulation.git
-cd black-hole-simulation
-```
+### Prerequisites
+- .NET 8.0 SDK or later
+- OpenTK libraries (automatically included via NuGet)
 
-2. Create a virtual environment:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+### Installation Steps
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+1. Clone or download the project
+2. Navigate to the project directory:
+   ```bash
+   cd black_hole
+   ```
+3. Restore dependencies:
+   ```bash
+   dotnet restore
+   ```
+4. Build the project:
+   ```bash
+   dotnet build
+   ```
+5. Run the program:
+   ```bash
+   dotnet run
+   ```
 
-## Usage
+## Dependencies
 
-Run the simulation:
-```bash
-python src/main.py
-```
-
-### Controls
-
-- **WASD**: Move camera
-- **Q/E**: Move camera up/down
-- **+/-**: Zoom in/out
-- **R**: Reset camera position
-- **G**: Toggle gravity on/off
-- **ESC**: Exit simulation
+- **OpenTK** (4.9.4) - Open Toolkit for graphics rendering and window management
+- **OpenTK.Mathematics** (4.9.4) - Mathematical utilities for vector and matrix operations
+- **.NET 8.0** - Target framework
 
 ## Project Structure
 
-```
-src/
-├── main.py              # Main simulation loop
-├── physics/             # Physics calculations
-│   ├── black_hole.py    # Black hole physics
-│   ├── particle.py      # Particle system
-│   └── constants.py     # Physical constants
-├── rendering/           # Rendering system
-│   ├── renderer.py      # Main renderer
-│   ├── camera.py        # Camera controls
-│   └── camera_config.py # Camera settings
-└── utils/               # Utility functions
-    └── vectors.py       # Vector operations
-```
-
-## Physics
-
-The simulation implements:
-- **Gravitational Force**: F = GMm/r²
-- **Schwarzschild Radius**: Rs = 2GM/c²
-- **Event Horizon**: Particles crossing the event horizon turn black
-- **Orbital Mechanics**: Particles follow realistic orbital paths
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Run tests: `python -m pytest tests/`
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Physics calculations based on Einstein's General Relativity
-- Inspired by real black hole observations from Event Horizon Telescope
-- Built with Python, Pygame, and NumPy
+- `physics/` - Physics simulation logic
+- `rendering/` - Graphics rendering components
+- `utils/` - Utility functions and helpers
+- `Objects/` - Object definitions
+- `Program.cs` - Entry point
