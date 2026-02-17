@@ -1,21 +1,24 @@
-using black_hole.utils;           // Config
 using OpenTK.Graphics.OpenGL4;    // GL
 using OpenTK.Mathematics;         // Vector2i, Color4
 using OpenTK.Windowing.Desktop;   // GameWindow, GameWindowSettings, NativeWindowSettings
 using OpenTK.Windowing.Common;
-using black_hole.Objects;    // FrameEventArgs, ResizeEventArgs
+using black_hole.Simulations;     // Simulation
+using black_hole.Utils;           // Config
+using black_hole.Rendering.Shaders; // BlackHoleShader
 
 namespace black_hole.Rendering
 {
-    public class SimulationWindow : GameWindow
+    public class Window : GameWindow
     {
+        private readonly Simulation simulation;
+        private BHRenderer bhRenderer;
+        // private readonly RayRenderer rayRenderer;
 
-        private readonly List<BlackHole> _blackHoles;
-
-        public SimulationWindow(GameWindowSettings gameSettings, NativeWindowSettings nativeSettings)
-            :base(gameSettings, nativeSettings)
+        public Window(GameWindowSettings gameSettings, NativeWindowSettings nativeSettings, Simulation simulation)
+        :base(gameSettings, nativeSettings)
         {
-            _blackHoles = blackHoles;
+            this.simulation = simulation;
+            this.bhRenderer = new BHRenderer(new BlackHoleShader());
         }
 
         protected override void OnLoad()
@@ -26,18 +29,11 @@ namespace black_hole.Rendering
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
-            base.OnRenderFrame(args);
-
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            GL.PushMatrix();
-            GL.Translate(Size.x / 2f, Size.y / 2f, 0f);
 
-            foreach (var bh in _blackHoles)
-            {
-                bh.Draw();
-            }
-
-            GL.PopMatrix();
+            bhRenderer.RenderBH(simulation.BlackHoles);
+            // rayRenderer.RenderRays(simulation.Rays);
+            
             SwapBuffers();
         }
 

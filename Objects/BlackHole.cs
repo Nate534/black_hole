@@ -1,29 +1,42 @@
 using OpenTK.Mathematics;
 using OpenTK.Graphics.OpenGL4;
+using black_hole.Utils;              // Config
 
 namespace black_hole.Objects
 {
-    class BlackHole
+    public class BlackHole
     {
-        // Black Hole Properties
+        public double Mass {get; set;}
         public Vector2 Position {get; set;}
         public Vector2 Velocity {get; set;} = Vector2.Zero;
-        public double Mass {get; set;}
 
-        public double VisualRadius {get; private set;}
+        public double SchwarzschildRadius { get; private set; }
 
-        //constants
-        private const double G = 6.67430e-11;
-        private const double c = 299792458;
+        public float VisualRadius { get; private set; }
 
-        public BlackHole(Vector2 position, double mass, float scale = 1e9f)
+        public BlackHole(double mass, Vector2 position, Vector2 velocity)
         {
-            Position = position;
             Mass = mass;
+            Position = position;
+            Velocity = velocity;
+            SchwarzschildRadius = GetSchwarzschildRadius();
+            VisualRadius = GetVisualRadius(SchwarzschildRadius);
+        }
 
-            double Radius = (2 * G * Mass) / (c * c);
+        public float GetSchwarzschildRadius()
+        {
+            const double G = 6.67430e-11;
+            const double C = 299792458;
+            return (float)((2 * G * Mass) / (C * C));
+        }
 
-            VisualRadius = (float)(Radius * scale);
+        private float GetVisualRadius(double radius)
+        {
+            Config? config = ConfigReader.ReadConfig("config.json");
+            float VisualRadius = (float)(Math.Log10(radius / config.Simulation.ReferenceRadius) * config.Simulation.VisualScale);
+            config = null;
+
+            return VisualRadius;
         }
     }
 }

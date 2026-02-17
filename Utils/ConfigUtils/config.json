@@ -1,0 +1,37 @@
+{
+  "Window": {
+    "Width": 1024,     
+    "Height": 768      
+  },
+    "Simulation": {
+      "ReferenceRadius": 3000,     
+      "VisualScale": 3e-8          
+  },
+    "Shaders": {
+      "BlackHole": {
+        "Vert": "blackhole.vert",
+        "Frag": "blackhole.frag"
+      },
+      "Ray": {
+        "Vert": "ray.vert",
+        "Frag": "ray.frag"
+      },
+      "Disk": {
+        "Vert": "disk.vert",
+        "Frag": "disk.frag"
+      }
+  },
+    "BlackHoles": [
+      {
+        "Name": "SagittariusA",
+        "Mass": 4.1e6,
+        "Position": { "X": 0, "Y": 0 }
+      },
+      {
+        "Name": "BH2",
+        "Mass": 1e9,
+        "Position": { "X": 1e18, "Y": 2e18 }
+      }
+    ]
+}
+
